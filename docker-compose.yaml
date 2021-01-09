@@ -1,0 +1,10 @@
+services:
+  web:
+    image: elasticsearch:1.0
+    user: elasticsearch
+    network_mode: "host"
+    volumes:
+      - /mnt/data/elasticsearchdockerfile/config:/workspace/config
+      - /mnt/data/elasticsearchdockerfile/data:/workspace/data
+      - /mnt/data/elasticsearchdockerfile/logs:/workspace/logs
+    command: bin/elasticsearch
