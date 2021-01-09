@@ -3,8 +3,15 @@ services:
     image: elasticsearch:1.0
     user: elasticsearch
     network_mode: "host"
+    container_name: elasticsearch_1.0
     volumes:
+      - /mnt/data/elasticsearchdockerfile/lawaplugin/configs:/workspace/plugins/lawaplugin/configs
       - /mnt/data/elasticsearchdockerfile/config:/workspace/config
       - /mnt/data/elasticsearchdockerfile/data:/workspace/data
       - /mnt/data/elasticsearchdockerfile/logs:/workspace/logs
     command: bin/elasticsearch
+  model:
+    image: lawawordsegment:1.0
+    network_mode: "host"
+    container_name: lawawordsegment_1.0
+    command: python3 torch_server.py -p 58085 -m 0
